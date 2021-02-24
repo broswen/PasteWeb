@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { BrowserRouter, Link, Route } from 'react-router-dom';
 import './App.css';
+import GetPaste from './GetPaste';
+import SubmitPaste from './SubmitPaste';
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <div className="Navbar">
+          <Link to="/" style={{ textDecoration: 'none', color: 'var(--black)' }}>
+            <div className="Logo"><strong>Paste</strong></div>
+          </Link>
+        </div>
+        <div className="Wrapper">
+          <Route exact path="/">
+            <SubmitPaste />
+          </Route>
+          <Route exact path="/:id">
+            <GetPaste />
+          </Route>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
